@@ -1,38 +1,64 @@
 .App {
-  text-align: center;
+  flex-grow: 1;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App *{
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.inputGroup{
+  position: relative;
+}
+
+.sugestions{
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background: #222;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.sugestions button{
+  padding: 5px;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--green)
+}
+
+.error{
+  color: brown
+}
+
+.identities {
+  padding: 20px 0;
+}
+
+.identities li {
+  background-color: #2a2a2a;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.identities button{
   color: white;
+  background-color: transparent;
 }
 
-.App-link {
-  color: #61dafb;
+.identities .stripe{
+  background-color: black;
+  color:black;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.identities .stripe:focus,
+.identities .stripe:hover,
+.identities .stripe::selection{
+  background-color:transparent;
+  color: white;
 }

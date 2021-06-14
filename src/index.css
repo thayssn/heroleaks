@@ -1,13 +1,145 @@
+:root{
+  --green: #a7e086;
+}
+
+html, body{
+  height: 100%;
+}
+
+::selection{
+  background-color: var(--green);
+  color: black;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: #2d2d2d;
+  color: white;
+  box-sizing: border-box;
+}
+
+* {
+  font-family: monospace;
+}
+
+:focus{
+  outline-width: 1px;
+  outline-offset: 0;
+  outline-color: var(--green);
+  outline-style: inset;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1{
+  font-size: 1.5em;
+}
+
+main{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+@media screen and (min-width: 768px){
+  .App{
+    padding: 30px;
+  }
+}
+
+li{
+  list-style: none;
+}
+
+input{
+  background-color: #3d3d3d;
+  border: 0;
+  padding: 4px 7px;
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+button{
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding: 4px 7px;
+  border: 0;
+}
+
+button[type="submit"]{
+  background-color: #2d2d2d;
+  color: #dedede;
+  border: 1px solid #222222;
+  margin-left: 1px;
+}
+
+button:hover{
+  background-color: #222222;
+}
+
+button:active{
+  background-color: #1a1a1a;
+}
+
+button:disabled{
+  background-color: #3d3d3d;
+  color: white;
+}
+
+button .glass{
+  display: inline-block;
+  animation: spin .8s infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  from{
+    transform: rotate(0)
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+header, footer{
+  color: var(--green)
+} 
+
+header{
+  font-size: 2rem;
+}
+
+header em{
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+header span{
+  color: crimson;
+  margin-left: 7px;
+}
+
+header > div{
+  margin-left: 15px;
+}
+
+a{
+  color: white;
+}
+
+footer span{
+  background-color: var(--green);
+  color: var(--green)
+}
+
+footer span::selection{
+  background-color: #2d2d2d;
+  color: white;
 }
