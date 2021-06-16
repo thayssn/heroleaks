@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import './App.css'
 
 import { debounce, findInString, logSkull } from './utils'
@@ -33,7 +33,7 @@ const App = () => {
   const [ knownWords, setKnownWords ] = useState([])
   const [ loading, setLoading ] = useState(false)
   const [ error, setError ] = useState('')
-  const inputRef = document.querySelector('form input');
+  const inputRef = useRef(null);
 
   async function fetchNames(){
     const response = await fetch('/heroes.json')
@@ -62,12 +62,12 @@ const App = () => {
 
   function selectSugestion(e) {
     setSugestions([])
-    inputRef.value = e.target.textContent
-    inputRef.focus()
+    inputRef.current.value = e.target.textContent
+    inputRef.current.focus()
   }
   async function handleFormSubmit(e) {
     e.preventDefault()
-    const term = inputRef.value;
+    const term = inputRef.current.value;
 
     if(!term) return;
 
@@ -83,7 +83,7 @@ const App = () => {
       setLoading(false)
       setSugestions([])
   
-      if(!filteredIdentities.length) setError(`No hero named '${inputRef.value}'`)
+      if(!filteredIdentities.length) setError(`No hero named '${inputRef.current.value}'`)
     },500)
   }
 
@@ -100,7 +100,7 @@ const App = () => {
       <h1>Use the box to search for the secret identities</h1>
       <form onSubmit={handleFormSubmit}>
         <div className="inputGroup">
-        <input type="text" placeholder="Search for identity" onChange={handleInputChange} autoFocus onFocusOut={() => { setSugestions([])}}/>
+        <input ref={inputRef} type="text" placeholder="Search for identity" onChange={handleInputChange} autoFocus onFocusOut={() => { setSugestions([])}}/>
           <ul className="sugestions">
             {sugestions.map((word, idx) => <button type="button" key={idx} onClick={selectSugestion}>{word}</button>)}
           </ul>
